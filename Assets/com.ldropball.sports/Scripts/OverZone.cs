@@ -4,15 +4,17 @@ public class OverZone : MonoBehaviour
 {
     private void Awake()
     {
-        Goal.OnCompleted += (goal) =>
-        {
-            transform.position = new Vector2(0, goal.position.y - 2);
-        };
+        Goal.OnCompleted += EventHandler;
     }
 
     private void OnDestroy()
     {
-        Goal.OnCompleted = null;
+        Goal.OnCompleted -= EventHandler;
+    }
+
+    private void EventHandler(Transform refTransform)
+    {
+        transform.position = new Vector2(0, refTransform.position.y - 2);
     }
 
     private void Start()
