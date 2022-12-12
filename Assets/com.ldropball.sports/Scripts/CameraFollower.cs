@@ -16,4 +16,9 @@ public class CameraFollower : MonoBehaviour
             transform.position = new Vector3(0, Target.position.y, -10);
         }
     }
+
+    public void Reset()
+    {
+        transform.position = new Vector3(0, 0, -10);
+    }
 }

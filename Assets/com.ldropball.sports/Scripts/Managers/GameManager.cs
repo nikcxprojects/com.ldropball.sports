@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         DeleteLastObjects();
+        FindObjectOfType<CameraFollower>().Reset();
 
         CameraFollower.Target = Instantiate(PlayerPrefab, EnvironmentRef).transform;
         CreateGoals();
