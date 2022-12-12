@@ -23,6 +23,7 @@ public class Goal : MonoBehaviour
 
     public void Destroy()
     {
+        OnCompleted = null;
         Destroy(gameObject);
     }
 

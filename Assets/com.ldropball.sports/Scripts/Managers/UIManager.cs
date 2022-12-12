@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
         Goal.OnCompleted += (_) =>
         {
             scoreText.text = finalScoreText.text = $"{++score}";
+
+            if (SettingsManager.VibraEnable)
+            {
+                Handheld.Vibrate();
+            }
         };
     }
 

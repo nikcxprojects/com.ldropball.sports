@@ -6564,7 +6564,6 @@ MonoBehaviour:
   result: {fileID: 1232047749}
   scoreText: {fileID: 424504394}
   finalScoreText: {fileID: 1045273570}
-  border: {fileID: 0}
 --- !u!1 &1676284665
 GameObject:
   m_ObjectHideFlags: 0
