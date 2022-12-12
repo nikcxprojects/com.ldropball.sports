@@ -22,11 +22,6 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        OpenWindow(0);
-    }
-
-    private void Start()
-    {
         Goal.OnCompleted += (_) =>
         {
             scoreText.text = finalScoreText.text = $"{++score}";
@@ -36,6 +31,8 @@ public class UIManager : MonoBehaviour
                 Handheld.Vibrate();
             }
         };
+
+        OpenWindow(0);
     }
 
     public void OpenMenu()

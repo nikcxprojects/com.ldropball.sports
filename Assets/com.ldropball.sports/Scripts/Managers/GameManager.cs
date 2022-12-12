@@ -21,20 +21,6 @@ public class GameManager : MonoBehaviour
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
 
-    private void Start()
-    {
-        //Block.OnCollisionEnter += () =>
-        //{
-        //    var hit = Instantiate(Resources.Load<AudioSource>("hit"));
-        //    hit.mute = GameObject.Find("SFX Source").GetComponent<AudioSource>().mute;
-
-        //    if(SettingsManager.VibraEnable)
-        //    {
-        //        Handheld.Vibrate();
-        //    }
-        //};
-    }
-
     private void DeleteLastObjects()
     {
         if (!FindObjectOfType<Player>())
