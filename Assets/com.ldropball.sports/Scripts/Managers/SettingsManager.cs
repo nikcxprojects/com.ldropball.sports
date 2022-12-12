@@ -28,7 +28,7 @@ public class SettingsManager : MonoBehaviour
             loop.mute = !loop.mute;
 
             Sprite status = loop.mute ? offSprite : onSprite;
-            soundBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
+            soundBtn.GetComponent<Image>().sprite = status;
         });
 
 
@@ -37,7 +37,7 @@ public class SettingsManager : MonoBehaviour
             sfx.mute = !sfx.mute;
 
             Sprite status = sfx.mute ? offSprite : onSprite;
-            sfxBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
+            sfxBtn.GetComponent<Image>().sprite = status;
         });
 
         vibroBtn.onClick.AddListener(() =>
@@ -45,7 +45,7 @@ public class SettingsManager : MonoBehaviour
             VibraEnable = !VibraEnable;
 
             Sprite status = VibraEnable ?  onSprite : offSprite;
-            vibroBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
+            vibroBtn.GetComponent<Image>().sprite = status;
         });
 
         soundBtn.onClick.Invoke();

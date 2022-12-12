@@ -13,7 +13,7 @@ public class LeaderboardManager : MonoBehaviour
         int[] scores = new int[container.childCount];
         for(int i = 0; i < scores.Length; i++)
         {
-            scores[i] = Random.Range(4500, 9999);
+            scores[i] = Random.Range(80, 120);
         }
 
         var sorted = scores.OrderByDescending(i => i).ToArray();
@@ -21,7 +21,7 @@ public class LeaderboardManager : MonoBehaviour
         for(int i = 0; i < container.childCount; i++)
         {
             Text leader = container.GetChild(i).GetChild(1).GetComponentInChildren<Text>();
-            leader.text = string.Format("Hit times {0:0000} count", sorted[i]);
+            leader.text = string.Format("Hit times {0:000} count", sorted[i]);
         }
     }
 }
