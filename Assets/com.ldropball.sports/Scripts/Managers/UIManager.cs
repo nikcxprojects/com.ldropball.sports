@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get => FindObjectOfType<UIManager>(); }
 
-    public int score;
+    private int score;
 
     private GameObject _last = null;
 
@@ -19,8 +19,6 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [SerializeField] Text scoreText;
     [SerializeField] Text finalScoreText;
-
-    public Transform border;
 
     private void Awake()
     {
