@@ -4,12 +4,11 @@ public class Player : MonoBehaviour
 {
     private Camera _camera;
 
-
     private bool IsPressing { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
     private Vector2 Direction { get; set; }
 
-    [SerializeField] float force;
+    private const float force = 60;
 
     private void OnMouseDown()
     {
