@@ -19,12 +19,21 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [SerializeField] Text scoreText;
     [SerializeField] Text finalScoreText;
+    [SerializeField] Text bestText;
 
     private void Awake()
     {
         Goal.OnCompleted += (_) =>
         {
             scoreText.text = finalScoreText.text = $"{++score}";
+            
+            if(score > PlayerPrefs.GetInt("best"))
+            {
+                PlayerPrefs.SetInt("best", score);
+                PlayerPrefs.Save();
+            }
+
+            bestText.text = $"BEST {PlayerPrefs.GetInt("best")}";
 
             if (SettingsManager.VibraEnable)
             {
