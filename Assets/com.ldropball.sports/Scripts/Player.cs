@@ -3,29 +3,43 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Camera _camera;
-    public static Vector2 Velocity { get; private set; }
 
+
+    private bool IsPressing { get; set; }
+    private Rigidbody2D Rigidbody { get; set; }
+    private Vector2 Direction { get; set; }
+
+    [SerializeField] float force;
+
+    private void OnMouseDown()
+    {
+        IsPressing = true;
+    }
+
+    private void OnMouseUp()
+    {
+        IsPressing = false;
+        Rigidbody.AddForce(Direction * force, ForceMode2D.Impulse);
+    }
 
     private void Awake()
     {
         _camera = Camera.main;
-        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 0.95f);
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if(Time.timeScale < 1)
+        if(Time.timeScale < 1 || !IsPressing)
         {
             return;
         }
 
-        Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        toInput.Normalize();
+        Direction = GetDirection();
+    }
 
-        toInput.x = Mathf.Clamp(toInput.x, -1, 1);
-        toInput.y = Mathf.Clamp(toInput.y, 0.2f, 1);
-
-        Velocity = toInput;
-        transform.GetChild(0).up = toInput;
+    Vector2 GetDirection()
+    {
+        return (_camera.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
     }
 }
