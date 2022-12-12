@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private int score ;
+    public static UIManager Instance { get => FindObjectOfType<UIManager>(); }
+
+    private int score;
 
     private GameObject _last = null;
 
@@ -27,10 +29,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Block.OnCollisionEnter += () =>
-        {
-            scoreText.text = finalScoreText.text = $"{++score}";
-        };
+        //Block.OnCollisionEnter += () =>
+        //{
+        //    scoreText.text = finalScoreText.text = $"{++score}";
+        //};
     }
 
     public void OpenMenu()
