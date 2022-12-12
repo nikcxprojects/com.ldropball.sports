@@ -81,5 +81,11 @@ public class UIManager : MonoBehaviour
 
         _last.SetActive(true);
         Time.timeScale = windowIndex == 4 ? 0 : 1;
+
+        if(windowIndex == 5)
+        {
+            scoreText.text = finalScoreText.text = $"{score}";
+            bestText.text = $"BEST {PlayerPrefs.GetInt("best")}";
+        }
     }
 }
