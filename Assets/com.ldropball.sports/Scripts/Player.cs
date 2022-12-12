@@ -16,6 +16,12 @@ public class Player : MonoBehaviour
         IsPressing = true;
     }
 
+    private void OnMouseDrag()
+    {
+        Rigidbody.velocity = Vector2.zero;
+        Rigidbody.angularVelocity = 0;
+    }
+
     private void OnMouseUp()
     {
         IsPressing = false;
