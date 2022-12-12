@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     private Player PlayerPrefab { get; set; }
     private Goal GoalPrefab { get; set; }
+    private OverZone OverZonePrefab { get; set; }
     private Transform EnvironmentRef { get; set; }
 
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefab = Resources.Load<Player>("player");
         GoalPrefab = Resources.Load<Goal>("goal");
+        OverZonePrefab = Resources.Load<OverZone>("over zone");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         }
 
         Destroy(FindObjectOfType<Player>().gameObject);
+        Destroy(FindObjectOfType<OverZone>().gameObject);
 
         Goal[] goals = FindObjectsOfType<Goal>();
         foreach (Goal g in goals)
@@ -65,6 +68,8 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<CameraFollower>().Reset();
 
         CameraFollower.Target = Instantiate(PlayerPrefab, EnvironmentRef).transform;
+        Instantiate(OverZonePrefab, EnvironmentRef);
+
         CreateGoals();
     }
 

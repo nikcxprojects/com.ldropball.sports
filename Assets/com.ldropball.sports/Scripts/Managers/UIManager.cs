@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get => FindObjectOfType<UIManager>(); }
 
-    private int score;
+    public int score;
 
     private GameObject _last = null;
 
@@ -29,10 +29,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //Block.OnCollisionEnter += () =>
-        //{
-        //    scoreText.text = finalScoreText.text = $"{++score}";
-        //};
+        Goal.OnCompleted += (_) =>
+        {
+            scoreText.text = finalScoreText.text = $"{++score}";
+        };
     }
 
     public void OpenMenu()

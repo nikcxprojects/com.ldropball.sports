@@ -52,4 +52,12 @@ public class Player : MonoBehaviour
     {
         return (_camera.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(Vector2.Distance(transform.position, FindObjectOfType<CameraFollower>().transform.position) > 6)
+        {
+            GameManager.Instance.EndGame();
+        }
+    }
 }

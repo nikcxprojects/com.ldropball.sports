@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
     private const float yOffset = 3.0f;
     public static Transform Parent { get; set; }
+
+    public static Action<Transform> OnCompleted { get; set; }
 
     public void Instantiate()
     {
@@ -21,5 +24,11 @@ public class Goal : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D()
+    {
+        OnCompleted?.Invoke(transform);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 }
