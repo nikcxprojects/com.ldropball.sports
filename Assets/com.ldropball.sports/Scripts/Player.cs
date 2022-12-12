@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        transform.position = new Vector2(0, -3);
+    }
+
     private void Update()
     {
         if(Time.timeScale < 1 || !IsPressing)

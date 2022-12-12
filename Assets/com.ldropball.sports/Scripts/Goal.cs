@@ -10,7 +10,7 @@ public class Goal : MonoBehaviour
         Parent = GameObject.Find("goals").transform;
         int index = Parent.childCount;
 
-        float xOffset = Random.Range(-1.46f, 1.46f);
+        float xOffset = index % 2 == 0 ? -1.46f : 1.46f;
 
         Vector2 position = new Vector2(xOffset, index * yOffset);
         Quaternion rotation = Quaternion.Euler(xOffset < 0 ? Vector3.up * 180 : Vector3.zero);

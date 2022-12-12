@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     {
         DeleteLastObjects();
 
-        Instantiate(PlayerPrefab, EnvironmentRef);
+        CameraFollower.Target = Instantiate(PlayerPrefab, EnvironmentRef).transform;
         CreateGoals();
     }
 
