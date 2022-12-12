@@ -21,7 +21,7 @@ public class LeaderboardManager : MonoBehaviour
         for(int i = 0; i < container.childCount; i++)
         {
             Text leader = container.GetChild(i).GetChild(1).GetComponentInChildren<Text>();
-            leader.text = string.Format("{0:0000}", sorted[i]);
+            leader.text = string.Format("Hit times {0:0000} count", sorted[i]);
         }
     }
 }
