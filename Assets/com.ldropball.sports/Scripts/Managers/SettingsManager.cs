@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
+    [SerializeField] Sprite offSprite;
+    [SerializeField] Sprite onSprite;
+
     [Space(10)]
     [SerializeField] AudioSource loop;
     [SerializeField] Button soundBtn;
@@ -24,8 +27,8 @@ public class SettingsManager : MonoBehaviour
         {
             loop.mute = !loop.mute;
 
-            string status = loop.mute ? "OFF" : "ON";
-            soundBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            Sprite status = loop.mute ? offSprite : onSprite;
+            soundBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
         });
 
 
@@ -33,16 +36,16 @@ public class SettingsManager : MonoBehaviour
         {
             sfx.mute = !sfx.mute;
 
-            string status = sfx.mute ? "OFF" : "ON";
-            sfxBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            Sprite status = sfx.mute ? offSprite : onSprite;
+            sfxBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
         });
 
         vibroBtn.onClick.AddListener(() =>
         {
             VibraEnable = !VibraEnable;
 
-            string status = VibraEnable ? "ON" : "OFF";
-            vibroBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            Sprite status = VibraEnable ?  onSprite : offSprite;
+            vibroBtn.transform.GetChild(0).GetComponent<Image>().sprite = status;
         });
 
         soundBtn.onClick.Invoke();
